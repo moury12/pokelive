@@ -14,7 +14,12 @@ class CategoryDetailsPage extends ConsumerWidget {
       appBar: AppBar(
         leading: const BackButton(color: Colors.white),
         title: const CustomText('Sneaker Collection'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search, color: Colors.white))],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search, color: Colors.white),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -28,11 +33,11 @@ class CategoryDetailsPage extends ConsumerWidget {
               ],
             ),
           ),
-          
+
           Expanded(
-            child: selectedTab == 0 
-              ? _buildLiveGrid(context) 
-              : _buildProductGrid()
+            child: selectedTab == 0
+                ? _buildLiveGrid(context)
+                : _buildProductGrid(),
           ),
         ],
       ),
@@ -46,10 +51,15 @@ class CategoryDetailsPage extends ConsumerWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.kPrimaryColor : AppColors.kBorderColor.withOpacity(0.3),
+          color: isActive
+              ? AppColors.kPrimaryColor
+              : AppColors.kBorderColor.withOpacity(0.3),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: CustomText(label, color: isActive ? Colors.white : AppColors.kGreyTextColor),
+        child: CustomText(
+          label,
+          color: isActive ? Colors.white : AppColors.kGreyTextColor,
+        ),
       ),
     );
   }
@@ -64,7 +74,8 @@ class CategoryDetailsPage extends ConsumerWidget {
         childAspectRatio: 0.75,
       ),
       itemCount: 6,
-      itemBuilder: (context, index) => LiveCard(onTap: () => context.push(AppRoutes.liveStream)),
+      itemBuilder: (context, index) =>
+          FeaturedEventCard(onTap: () => context.push(AppRoutes.liveStream)),
     );
   }
 

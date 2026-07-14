@@ -6,9 +6,41 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const CustomText('Home')),
-      body: Center(
-        child: LiveCard(onTap: () {}),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          spacing: 8,
+          children: [
+            SvgPicture.asset(AppAssets.appLogo, height: 30),
+            const CustomText(
+              AppStaticStrings.appName,
+              variant: TextVariant.headlineMedium,
+            ),
+          ],
+        ),
+        actions: [
+          DefaultGreyCircleContainer(
+            asset: AppAssets.searchStatus,
+            onTap: () {},
+          ),
+          space4W,
+          DefaultGreyCircleContainer(
+            asset: AppAssets.notificationBing,
+            onTap: () {},
+          ),
+          space4W,
+          DefaultGreyCircleContainer(
+            asset: AppAssets.shoppingCart,
+            onTap: () {},
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: AppPadding.getPadding12H(context),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [FeaturedEventCard(onTap: () {})],
+        ),
       ),
     );
   }

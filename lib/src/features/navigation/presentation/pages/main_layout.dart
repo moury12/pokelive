@@ -1,5 +1,6 @@
 import '../../../../src_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 class MainLayout extends ConsumerWidget {
   const MainLayout({super.key});
   static const List<Widget> _screens = [
@@ -20,28 +21,43 @@ class MainLayout extends ConsumerWidget {
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColors.kBackgroundColor,
         selectedItemColor: AppColors.kTextColor,
-        unselectedItemColor: AppColors.kGreyTextColor,
+        unselectedItemColor: AppColors.kTextColor,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         items: [
-          _navItem(AppAssets.home, 'Home'),
-          _navItem(AppAssets.category, 'Category'),
-          _navItem(AppAssets.sellerHubFill, 'Seller Hub'),
-          _navItem(AppAssets.shoppingCart, 'Cart'),
-          _navItem(AppAssets.profile, 'Profile'),
+          _navItem(AppAssets.home, AppAssets.home2, 'Home'),
+          _navItem(AppAssets.searchStatus, AppAssets.searchStatus2, 'Category'),
+          _navItem(AppAssets.category, AppAssets.sellerHubFill, 'Seller Hub'),
+          _navItem(AppAssets.shoppingCart, AppAssets.shoppingCartFill, 'Cart'),
+          _navItem(AppAssets.profile, AppAssets.profileFill, 'Profile'),
         ],
       ),
     );
   }
-  BottomNavigationBarItem _navItem(String asset, String label) {
+
+  BottomNavigationBarItem _navItem(String asset, String asset2, String label) {
     return BottomNavigationBarItem(
       icon: Padding(
         padding: const EdgeInsets.only(bottom: 4),
-        child: SvgPicture.asset(asset, colorFilter: const ColorFilter.mode(AppColors.kGreyTextColor, BlendMode.srcIn)),
+        child: SvgPicture.asset(
+          asset,
+          height: 25,
+          colorFilter: const ColorFilter.mode(
+            AppColors.kTextColor,
+            BlendMode.srcIn,
+          ),
+        ),
       ),
       activeIcon: Padding(
         padding: const EdgeInsets.only(bottom: 4),
-        child: SvgPicture.asset(asset, colorFilter: const ColorFilter.mode(AppColors.kTextColor, BlendMode.srcIn)),
+        child: SvgPicture.asset(
+          asset2,
+          height: 25,
+          // colorFilter: const ColorFilter.mode(
+          //   AppColors.kTextColor,
+          //   BlendMode.srcIn,
+          // ),
+        ),
       ),
       label: label,
     );
