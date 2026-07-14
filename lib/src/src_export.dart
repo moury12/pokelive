@@ -9,6 +9,10 @@ export 'core/core_export.dart';
 export 'features/auth/presentation/auth_presentation_export.dart';
 export 'features/splash/presentation/splash_presentation_export.dart';
 export 'features/home/home_export.dart';
+export 'features/navigation/navigation_export.dart';
+export 'features/raffle/raffle_export.dart';
+export 'features/live/live_export.dart';
+export 'features/category/category_export.dart';
 
 // Routes
 export 'core/routes/app_router.dart';

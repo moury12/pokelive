@@ -13,6 +13,7 @@ export 'widgets/custom_text_field.dart';
 export 'widgets/custom_snackbar.dart';
 export 'widgets/button_tap_widget.dart';
 export 'widgets/app_loader.dart';
+export 'widgets/custom_network_image.dart';
 
 export 'constants/constants_export.dart';
 export 'routes/route_export.dart';

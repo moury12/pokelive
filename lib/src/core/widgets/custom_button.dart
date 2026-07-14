@@ -1,5 +1,3 @@
-
-
 import '../../src_export.dart';
 
 class CustomButton extends StatelessWidget {
@@ -38,6 +36,7 @@ class CustomButton extends StatelessWidget {
 
     return SizedBox(
       width: isExpanding ? double.infinity : null,
+      height: 45,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: isOutlined
@@ -72,7 +71,6 @@ class CustomButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-              
                   Text(
                     text,
                     style:
@@ -85,7 +83,8 @@ class CustomButton extends StatelessWidget {
                                   : Colors.white),
                         ),
                   ),
-                      if (icon != null) ...[ space8W,
+                  if (icon != null) ...[
+                    space8W,
                     Icon(
                       icon,
                       size: 20,
@@ -94,7 +93,6 @@ class CustomButton extends StatelessWidget {
                           textColor ??
                           (isOutlined ? AppColors.kPrimaryColor : Colors.white),
                     ),
-                   
                   ],
                 ],
               ),

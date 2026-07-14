@@ -58,7 +58,9 @@ class LoginPage extends ConsumerWidget {
             // space24H,
             CustomButton(
               text: AppStaticStrings.logIn,
-              onPressed: () {}, // Logic not needed
+              onPressed: () {
+                context.push(AppRoutes.home);
+              }, // Logic not needed
               icon: Icons.arrow_forward,
             ),
             // space24H,

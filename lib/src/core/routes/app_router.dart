@@ -30,6 +30,22 @@ class AppRouter {
         path: AppRoutes.emailConfirmation,
         builder: (context, state) => const ForgotPasswordPage(),
       ),
+      GoRoute(
+        path: AppRoutes.home,
+        builder: (context, state) => const MainLayout(),
+      ),
+      GoRoute(
+        path: AppRoutes.raffleDetail,
+        builder: (context, state) => const RaffleDetailPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.liveStream,
+        builder: (context, state) => const LiveStreamPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.categoryDetails,
+        builder: (context, state) => const CategoryDetailsPage(),
+      ),
     ],
   );
 }

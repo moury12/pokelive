@@ -13,4 +13,7 @@ class AppRoutes {
   static const String home    = '/home';
   static const String profile = '/profile';
   static const String detail  = '/detail/:id';
+  static const String raffleDetail = '/raffle-detail';
+  static const String liveStream = '/live-stream';
+  static const String categoryDetails = '/category-details';
 }
