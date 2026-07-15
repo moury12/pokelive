@@ -30,15 +30,9 @@ class SelectAddressPage extends ConsumerWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const CustomText('Select Address'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => context.pop(),
-        ),
-      ),
+      appBar: AppBar(title: const Text('Select Address')),
       body: ListView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: AppPadding.getPadding12H(context),
         itemCount: sampleAddresses.length,
         itemBuilder: (context, index) {
           final address = sampleAddresses[index];
@@ -50,20 +44,36 @@ class SelectAddressPage extends ConsumerWidget {
               color: AppColors.kBorderColor.withOpacity(0.1),
               borderRadius: BorderRadius.circular(12),
               border: Border.all(
-                color: isSelected ? AppColors.kPrimaryColor : AppColors.kBorderColor,
+                color: isSelected
+                    ? AppColors.kAccentColor
+                    : AppColors.kBorderColor,
                 width: isSelected ? 2 : 1,
               ),
             ),
             child: ListTile(
+              minTileHeight: 20,
+              minVerticalPadding: 0,
               contentPadding: const EdgeInsets.all(12),
               leading: Icon(
-                isSelected ? Icons.radio_button_checked : Icons.radio_button_off,
-                color: isSelected ? AppColors.kPrimaryColor : AppColors.kGreyTextColor,
+                isSelected
+                    ? Icons.radio_button_checked
+                    : Icons.radio_button_off,
+                color: isSelected
+                    ? AppColors.kAccentColor
+                    : AppColors.kGreyTextColor,
               ),
-              title: CustomText('${address.name}, ${address.phone}', fontSize: 14, fontWeight: FontWeight.bold),
+              title: CustomText(
+                '${address.name}, ${address.phone}',
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 4),
-                child: CustomText('${address.street}, ${address.city}', fontSize: 12, color: AppColors.kGreyTextColor),
+                child: CustomText(
+                  '${address.street}, ${address.city}',
+                  fontSize: 12,
+                  color: AppColors.kGreyTextColor,
+                ),
               ),
               onTap: () {
                 ref.read(selectedAddressProvider.notifier).state = address;

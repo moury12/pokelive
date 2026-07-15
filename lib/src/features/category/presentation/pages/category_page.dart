@@ -7,15 +7,11 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const CustomText(
-          'Explore Categories',
-          variant: TextVariant.headlineMedium,
-        ),
+        title: const Text('Explore Categories'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: AppPadding.getPadding12(context),
+        padding: AppPadding.getPadding12H(context),
         child: Column(
           children: [
             const CustomTextField(

@@ -32,7 +32,7 @@ class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.home,
-        builder: (context, state) => const MainLayout(),
+        builder: (context, state) => const NavigationPage(),
       ),
       GoRoute(
         path: AppRoutes.raffleDetail,

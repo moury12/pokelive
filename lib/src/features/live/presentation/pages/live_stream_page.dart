@@ -65,30 +65,7 @@ class LiveStreamPage extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  Stack(
-                    children: [
-                      const DefaultGreyCircleContainer(
-                        asset: AppAssets.shoppingCart,
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          padding: EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle,
-                          ),
-                          child: CustomText(
-                            '2',
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  CartIconButton(),
                   space8W,
                   DefaultGreyCircleContainer(
                     onTap: () => context.pop(),

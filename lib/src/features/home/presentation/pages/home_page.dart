@@ -36,10 +36,8 @@ class HomePage extends ConsumerWidget {
             onTap: () {},
           ),
           space8W,
-          DefaultGreyCircleContainer(
-            asset: AppAssets.shoppingCart,
-            onTap: () => context.push(AppRoutes.cart),
-          ),
+          CartIconButton(),
+
           // space12W,
         ],
       ),

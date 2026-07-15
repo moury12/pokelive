@@ -1,13 +1,13 @@
 import '../../../../src_export.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MainLayout extends ConsumerWidget {
-  const MainLayout({super.key});
+class NavigationPage extends ConsumerWidget {
+  const NavigationPage({super.key});
   static const List<Widget> _screens = [
     HomePage(),
     CategoryPage(),
     Center(child: Text('Seller Hub')),
-    Center(child: Text('Cart')),
+    CartPage(),
     Center(child: Text('Profile')),
   ];
   @override
