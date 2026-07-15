@@ -1,16 +1,11 @@
-# pokelive
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+do this product details page with reviews from there it will redirect to store details pages 
+also do the cart and check out page during check out use can select shipping select address 
+for product details review and store will be one same folder 
+cart nd check out will be on same folder 
+manage exports nd route  as i told
+mainatain structure
+make generic custom widgets for simmilar design and place them in different file inside widget folder of that particular feature folder
+use my custom widget theme nd colors 
+use spacing 8 or 12 padding also 12 only 

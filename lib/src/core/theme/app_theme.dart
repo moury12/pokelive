@@ -12,11 +12,16 @@ class AppTheme {
       // surface: AppColors.kSurfaceColor,
     ),
     scaffoldBackgroundColor: AppColors.kBackgroundColor,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       backgroundColor: AppColors.kBackgroundColor,
-      foregroundColor: Color.fromRGBO(26, 26, 46, 1),
+      foregroundColor: AppColors.kTextColor,
       elevation: 0,
-      centerTitle: false,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.kTextColor,
+      ),
       surfaceTintColor: Colors.transparent,
     ),
     textTheme: const TextTheme(

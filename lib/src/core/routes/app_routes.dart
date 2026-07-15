@@ -16,4 +16,12 @@ class AppRoutes {
   static const String raffleDetail = '/raffle-detail';
   static const String liveStream = '/live-stream';
   static const String categoryDetails = '/category-details';
+
+  static const String productDetail = '/product-detail';
+  static const String reviews = '/reviews';
+  static const String storeDetails = '/store-details';
+  static const String cart = '/cart';
+  static const String checkout = '/checkout';
+  static const String selectAddress = '/select-address';
+  static const String storyView = '/story-view';
 }

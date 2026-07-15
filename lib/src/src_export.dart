@@ -13,6 +13,8 @@ export 'features/navigation/navigation_export.dart';
 export 'features/raffle/raffle_export.dart';
 export 'features/live/live_export.dart';
 export 'features/category/category_export.dart';
+export 'features/product/product_export.dart';
+export 'features/cart/cart_export.dart';
 
 // Routes
 export 'core/routes/app_router.dart';

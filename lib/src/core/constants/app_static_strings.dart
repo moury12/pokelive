@@ -63,4 +63,6 @@ class AppStaticStrings {
   static const String endingSoon = 'Ending Soon';
 
   static const String viewAll = 'View All';
+
+  static const String raffle = 'Raffle';
 }

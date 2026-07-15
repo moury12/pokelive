@@ -1,76 +1,114 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../src_export.dart';
 
-class RaffleDetailPage extends StatelessWidget {
+class RaffleDetailPage extends ConsumerWidget {
   const RaffleDetailPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final countdownAsync = ref.watch(raffleCountdownProvider);
+
     return Scaffold(
-      appBar: AppBar(leading: const BackButton(color: Colors.white), title: const CustomText('Raffle')),
+      appBar: AppBar(title: const Text(AppStaticStrings.raffle)),
       body: SingleChildScrollView(
+        padding: AppPadding.getPadding12H(context),
         child: Column(
+          spacing: 12,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Stack(
-                children: [
-                  const CustomNetworkImage(
-                    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000',
-                    height: 250,
-                    radius: 20,
-                  ),
-                  Positioned(
-                    top: 15,
-                    left: 15,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(4)),
-                      child: const CustomText('● Live Raffle', fontWeight: FontWeight.bold),
+            Stack(
+              children: [
+                const CustomNetworkImage(
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000',
+                  height: 250,
+                  radius: 20,
+                ),
+                Positioned(
+                  top: 15,
+                  left: 15,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
                     ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText('Win Nike Special sneaker', variant: TextVariant.headlineMedium),
-                  space8H,
-                  const CustomText(
-                    'Join our weekly community raffle! For just £1, you could own one of the rarest cards in existence...',
-                    color: AppColors.kGreyTextColor,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: const CustomText(
+                      '● Live Raffle',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  space24H,
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(color: AppColors.kBorderColor.withOpacity(0.2), borderRadius: BorderRadius.circular(16)),
-                    child: Column(
-                      children: [
-                        const CustomText('RAFFLE ENDS IN', color: AppColors.kGreyTextColor),
-                        space16H,
-                        const Row(
+                ),
+              ],
+            ),
+            Column(
+              spacing: 12,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomText(
+                  'Win Nike Special sneaker',
+                  variant: TextVariant.headlineMedium,
+                ),
+                // space8H,
+                const CustomText(
+                  'Join our weekly community raffle! For just £1, you could own one of the rarest cards in existence...',
+                  color: AppColors.kGreyTextColor,
+                ),
+                // space24H,
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: AppColors.kBorderColor.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    children: [
+                      const CustomText(
+                        'RAFFLE ENDS IN',
+                        color: AppColors.kGreyTextColor,
+                      ),
+                      // space16H,
+                      countdownAsync.when(
+                        data: (duration) => Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _TimerUnit(val: '03', label: 'DAYS'),
-                            _TimerSeparator(),
-                            _TimerUnit(val: '12', label: 'HRS'),
-                            _TimerSeparator(),
-                            _TimerUnit(val: '45', label: 'MINS'),
+                            _TimerUnit(
+                              val: duration.inDays.toString().padLeft(2, '0'),
+                              label: 'DAYS',
+                            ),
+                            const _TimerSeparator(),
+                            _TimerUnit(
+                              val: (duration.inHours % 24).toString().padLeft(
+                                2,
+                                '0',
+                              ),
+                              label: 'HRS',
+                            ),
+                            const _TimerSeparator(),
+                            _TimerUnit(
+                              val: (duration.inMinutes % 60).toString().padLeft(
+                                2,
+                                '0',
+                              ),
+                              label: 'MINS',
+                            ),
                           ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
+                        ),
+                        loading: () => const AppLoader(),
+                        error: (_, __) => const CustomText('Timer Error'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: _RaffleBottomBar(),
+      bottomNavigationBar: const _RaffleBottomBar(),
     );
   }
 }
@@ -82,7 +120,12 @@ class _TimerUnit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomText(val, fontSize: 32, fontWeight: FontWeight.bold, color: Colors.red),
+        CustomText(
+          val,
+          fontSize: 32,
+          fontWeight: FontWeight.bold,
+          color: Colors.red,
+        ),
         CustomText(label, fontSize: 10, color: AppColors.kGreyTextColor),
       ],
     );
@@ -94,45 +137,86 @@ class _TimerSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10,),
-      child: CustomText(':', fontSize: 32, fontWeight: FontWeight.bold, color: Colors.red),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: CustomText(
+        ':',
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        color: Colors.red,
+      ),
     );
   }
 }
 
-class _RaffleBottomBar extends StatelessWidget {
+class _RaffleBottomBar extends ConsumerWidget {
+  const _RaffleBottomBar();
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final quantity = ref.watch(raffleQuantityProvider);
+    const double pricePerTicket = 1.0;
+
     return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+      padding: AppPadding.getPadding12(context),
+      decoration: const BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+      ),
       child: Column(
+        spacing: 12,
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(20)),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.kBorderColor),
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 child: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.remove, color: Colors.white)),
-                    const CustomText('0'),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.add, color: Colors.white)),
+                    IconButton(
+                      onPressed: quantity > 1
+                          ? () => ref
+                                .read(raffleQuantityProvider.notifier)
+                                .state--
+                          : null,
+                      icon: const Icon(Icons.remove, color: Colors.white),
+                    ),
+                    CustomText('$quantity', variant: TextVariant.titleLarge),
+                    IconButton(
+                      onPressed: () =>
+                          ref.read(raffleQuantityProvider.notifier).state++,
+                      icon: const Icon(Icons.add, color: Colors.white),
+                    ),
                   ],
                 ),
               ),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  CustomText('Total cost', color: AppColors.kGreyTextColor),
-                  CustomText('£1.00', variant: TextVariant.headlineMedium),
+                  const CustomText(
+                    'Total cost',
+                    color: AppColors.kGreyTextColor,
+                  ),
+                  CustomText(
+                    '£${(quantity * pricePerTicket).toStringAsFixed(2)}',
+                    variant: TextVariant.headlineMedium,
+                  ),
                 ],
-              )
+              ),
             ],
           ),
+          CustomButton(
+            text:
+                'Buy $quantity Entry (£${(quantity * pricePerTicket).toStringAsFixed(2)})',
+            onPressed: () {
+              CustomSnackbar.show(context, 'Successfully joined the raffle!');
+            },
+            borderRadius: 30,
+          ),
           space24H,
-          CustomButton(text: 'Buy 1 Entry (\$1.00)', onPressed: () {}, borderRadius: 30),
         ],
       ),
     );

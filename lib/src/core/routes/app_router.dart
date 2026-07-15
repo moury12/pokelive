@@ -46,6 +46,34 @@ class AppRouter {
         path: AppRoutes.categoryDetails,
         builder: (context, state) => const CategoryDetailsPage(),
       ),
+      GoRoute(
+        path: AppRoutes.productDetail,
+        builder: (context, state) => const ProductDetailsPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.reviews,
+        builder: (context, state) => const ReviewListPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.storeDetails,
+        builder: (context, state) => const StoreDetailsPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.cart,
+        builder: (context, state) => const CartPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.checkout,
+        builder: (context, state) => const CheckoutPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.selectAddress,
+        builder: (context, state) => const SelectAddressPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.storyView,
+        builder: (context, state) => const StoryViewPage(),
+      ),
     ],
   );
 }

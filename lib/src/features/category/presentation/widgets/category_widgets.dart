@@ -40,26 +40,27 @@ class CategoryCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            top: 10,
-            left: 10,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(4)),
-              child: CustomText('● $liveCount live', fontSize: 10, fontWeight: FontWeight.bold),
-            ),
-          ),
+          Positioned(top: 10, left: 10, child: LiveWidget()),
           Positioned(
             bottom: 12,
             left: 12,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (isLarge) const CustomText('Trending', fontSize: 10, color: Colors.purpleAccent),
-                CustomText(title, variant: TextVariant.titleLarge, fontWeight: FontWeight.bold),
+                if (isLarge)
+                  const CustomText(
+                    'Trending',
+                    fontSize: 10,
+                    color: Colors.purpleAccent,
+                  ),
+                CustomText(
+                  title,
+                  variant: TextVariant.titleLarge,
+                  fontWeight: FontWeight.bold,
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -71,20 +72,38 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const CustomNetworkImage(
-          imageUrl: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=500',
-          height: 160,
-          radius: 16,
-        ),
-        space8H,
-        const CustomText('Sports Shoe', fontWeight: FontWeight.bold),
-        const CustomText('Best sneaker in town ........', fontSize: 10, color: AppColors.kGreyTextColor),
-        space4H,
-        const CustomText('£50.00', fontWeight: FontWeight.bold, color: AppColors.kRedColor),
-      ],
+    return GestureDetector(
+      onTap: () => context.push(AppRoutes.productDetail),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: const CustomNetworkImage(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=500',
+  
+              radius: 16,
+            ),
+          ),
+          space8H,
+          const CustomText(
+            'Sports Shoe',
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+          const CustomText(
+            'Best sneaker in town ........',
+            fontSize: 10,
+            color: AppColors.kGreyTextColor,
+          ),
+          space4H,
+          const CustomText(
+            '£50.00',
+            fontWeight: FontWeight.bold,
+            color: AppColors.kAccentColor,
+          ),
+        ],
+      ),
     );
   }
 }

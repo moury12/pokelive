@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../src_export.dart';
-import '../controller/category_controller.dart';
-import '../widgets/category_widgets.dart';
+
 
 class CategoryDetailsPage extends ConsumerWidget {
   const CategoryDetailsPage({super.key});
@@ -13,7 +12,7 @@ class CategoryDetailsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(color: Colors.white),
-        title: const CustomText('Sneaker Collection'),
+        title: const Text('Sneaker Collection'),
         actions: [
           IconButton(
             onPressed: () {},
@@ -25,8 +24,9 @@ class CategoryDetailsPage extends ConsumerWidget {
         children: [
           // Custom Tab Switcher
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(
+              spacing: 8,
               children: [
                 _buildTabButton(ref, 'Live', 0, selectedTab),
                 _buildTabButton(ref, 'Product', 1, selectedTab),
@@ -66,26 +66,26 @@ class CategoryDetailsPage extends ConsumerWidget {
 
   Widget _buildLiveGrid(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 12,
-        mainAxisSpacing: 16,
+        mainAxisSpacing: 12,
         childAspectRatio: 0.75,
       ),
       itemCount: 6,
       itemBuilder: (context, index) =>
-          FeaturedEventCard(onTap: () => context.push(AppRoutes.liveStream)),
+          HomeLiveCard(onTap: () => context.push(AppRoutes.liveStream)),
     );
   }
 
   Widget _buildProductGrid() {
     return GridView.builder(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 12,
-        mainAxisSpacing: 16,
+        mainAxisSpacing: 12,
         childAspectRatio: 0.7,
       ),
       itemCount: 8,

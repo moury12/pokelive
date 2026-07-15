@@ -8,11 +8,14 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const CustomText('Explore Categories', variant: TextVariant.headlineMedium),
+        title: const CustomText(
+          'Explore Categories',
+          variant: TextVariant.headlineMedium,
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: AppPadding.getPadding12(context),
         child: Column(
           children: [
             const CustomTextField(
@@ -21,10 +24,11 @@ class CategoryPage extends StatelessWidget {
               borderRadius: 30,
               fillColor: AppColors.kBorderColor,
             ),
-            space24H,
+            space8H,
             CategoryCard(
               title: 'Sneaker Collection',
-              imageUrl: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=1000',
+              imageUrl:
+                  'https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=1000',
               liveCount: '15 stream now',
               isLarge: true,
               onTap: () => context.push(AppRoutes.categoryDetails),
@@ -44,12 +48,13 @@ class CategoryPage extends StatelessWidget {
                 final titles = ['Bag', 'Laptop', 'Phone', 'Watch'];
                 return CategoryCard(
                   title: titles[index],
-                  imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400',
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400',
                   liveCount: '15 live',
                   onTap: () => context.push(AppRoutes.categoryDetails),
                 );
               },
-            )
+            ),
           ],
         ),
       ),
