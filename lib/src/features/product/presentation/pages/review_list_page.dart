@@ -6,15 +6,9 @@ class ReviewListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const CustomText('Reviews'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => context.pop(),
-        ),
-      ),
+      appBar: AppBar(title: const Text('Reviews')),
       body: ListView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: AppPadding.getPadding12H(context),
         itemCount: 8,
         itemBuilder: (context, index) => const ReviewTile(),
       ),

@@ -1,22 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:flutter_riverpod/legacy.dart' show StateProvider;
 import '../../../../src_export.dart';
 
-final selectedSizeProvider = StateProvider<int>((ref) => 0);
-final productQuantityProvider = StateProvider<int>((ref) => 1);
+// UI State
+final productQuantityProvider = StateProvider<int>((ref) => 0);
 
 class ProductDetailsPage extends ConsumerWidget {
   const ProductDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedSize = ref.watch(selectedSizeProvider);
     final quantity = ref.watch(productQuantityProvider);
 
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // 1. Header Image with Pagination Dots
             Stack(
               children: [
                 const CustomNetworkImage(
@@ -25,183 +27,277 @@ class ProductDetailsPage extends ConsumerWidget {
                   height: 400,
                   width: double.infinity,
                 ),
+
+                // Pagination Dots
                 Positioned(
-                  top: 40,
-                  left: 16,
-                  child: DefaultGreyCircleContainer(
-                    customIcon: Icons.arrow_back,
-                    onTap: () => context.pop(),
+                  bottom: 20,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                      space8W,
+                      Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: Colors.white24,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
+
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: AppPadding.getPadding12(context),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomText(
                     'Sneakers',
-                    color: Colors.purple,
+                    color: Colors.purpleAccent,
                     fontSize: 12,
                   ),
                   const CustomText(
                     'Premium Sports Shoe',
-                    variant: TextVariant.headlineMedium,
+                    variant: TextVariant.headlineLarge,
                   ),
-                  GestureDetector(
-                    onTap: () => context.push(AppRoutes.reviews),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          color: AppColors.kYellowColor,
-                          size: 18,
+                  space8H,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.star,
+                        color: AppColors.kYellowColor,
+                        size: 18,
+                      ),
+                      space4W,
+                      const CustomText('4.5', fontWeight: FontWeight.bold),
+                      ButtonTapWidget(
+                        onTap: () => context.push(AppRoutes.reviews),
+                        child: CustomText(
+                          '  |  0 Reviews',
+                          color: AppColors.kAccentColor,
                         ),
-                        const CustomText(' 4.5  |  8 Reviews', fontSize: 12),
-                        const Spacer(),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right,
+                        color: AppColors.kAccentColor,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                  space8H,
+                  const CustomText(
+                    'weight: 1100gm',
+                    color: AppColors.kGreyTextColor,
+                    fontSize: 12,
+                  ),
+                  space8H,
+                  const CustomText(
+                    '£165.00',
+                    variant: TextVariant.displaySmall,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  space8H,
+
+                  // 2. Quantity & In Stock Selector
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.kBorderColor.withOpacity(0.5),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: IntrinsicHeight(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ButtonTapWidget(
+                            onTap: () =>
+                                ref
+                                        .read(productQuantityProvider.notifier)
+                                        .state >
+                                    0
+                                ? ref
+                                      .read(productQuantityProvider.notifier)
+                                      .state--
+                                : null,
+                            child: const Icon(
+                              Icons.remove,
+                              color: AppColors.kGreyTextColor,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: CustomText('$quantity', fontSize: 16),
+                          ),
+                          ButtonTapWidget(
+                            onTap: () => ref
+                                .read(productQuantityProvider.notifier)
+                                .state++,
+                            child: const Icon(
+                              Icons.add,
+                              color: AppColors.kGreyTextColor,
+                            ),
+                          ),
+                          const VerticalDivider(
+                            color: AppColors.kBorderColor,
+                            indent: 8,
+                            endIndent: 8,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 12),
+                            child: CustomText(
+                              'In stock',
+                              color: AppColors.kAccentColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  space8H,
+
+                  // 3. Shipping Options Card
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.kBorderColor.withOpacity(0.5),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         const CustomText(
-                          'Weight: 1100gm',
-                          color: AppColors.kGreyTextColor,
-                          fontSize: 12,
+                          'Shipping Options',
+                          fontWeight: FontWeight.bold,
+                        ),
+                        space8H,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on_outlined,
+                              color: Colors.white,
+                            ),
+                            space8W,
+                            const Expanded(
+                              child: CustomText(
+                                'Dhaka, Dhaka city North,\nMohakhali',
+                                fontSize: 13,
+                                height: 1.4,
+                              ),
+                            ),
+                            const CustomText(
+                              'Change ',
+                              fontSize: 12,
+                              color: AppColors.kAccentColor,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            const Icon(
+                              Icons.keyboard_arrow_down,
+                              color: AppColors.kAccentColor,
+                              size: 20,
+                            ),
+                          ],
+                        ),
+                        space16H,
+                        const Row(
+                          children: [
+                            Icon(
+                              Icons.local_shipping_outlined,
+                              color: Colors.white,
+                            ),
+                            space12W,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomText('Delivery Info', fontSize: 14),
+                                CustomText(
+                                  'Delivery Time : 1-5 working days',
+                                  fontSize: 11,
+                                  color: AppColors.kGreyTextColor,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  space12H,
-                  const CustomText(
-                    '£165.00',
-                    variant: TextVariant.displaySmall,
-                    color: Colors.white,
-                  ),
-                  space12H,
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 4,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.kBorderColor),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Row(
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                if (quantity > 1) {
-                                  ref
-                                      .read(productQuantityProvider.notifier)
-                                      .state--;
-                                }
-                              },
-                              icon: const Icon(
-                                Icons.remove,
-                                color: Colors.white,
-                              ),
-                            ),
-                            CustomText('$quantity'),
-                            IconButton(
-                              onPressed: () {
-                                ref
-                                    .read(productQuantityProvider.notifier)
-                                    .state++;
-                              },
-                              icon: const Icon(Icons.add, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ),
-                      space12W,
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.kBorderColor.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const CustomText(
-                          'In stock',
-                          color: Colors.green,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                  space24H,
-                  const CustomText('Select Size'),
                   space8H,
-                  Row(
-                    children: List.generate(4, (index) {
-                      final sizes = ['S', 'M', 'L', 'XL'];
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: SizeOption(
-                          label: sizes[index],
-                          isSelected: selectedSize == index,
-                          onTap: () =>
-                              ref.read(selectedSizeProvider.notifier).state =
-                                  index,
-                        ),
-                      );
-                    }),
-                  ),
-                  space24H,
-                  const CustomText('Shipping Options'),
+
+                  // 4. Store Visit Row
                   Container(
-                    margin: const EdgeInsets.only(top: 8),
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.kBorderColor),
+                      border: Border.all(
+                        color: AppColors.kBorderColor.withOpacity(0.5),
+                      ),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: Icon(Icons.location_on, color: Colors.white),
-                      title: CustomText(
-                        'Dhaka, Dhaka city North',
-                        fontSize: 14,
-                      ),
-                      trailing: CustomText(
-                        'Change',
-                        color: AppColors.kGreyTextColor,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  space24H,
-                  GestureDetector(
-                    onTap: () => context.push(AppRoutes.storeDetails),
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: AppColors.kBorderColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Row(
-                        children: [
-                          const CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              'https://i.pravatar.cc/100',
+                    child: Row(
+                      children: [
+                        const CustomNetworkImage(
+                          imageUrl: 'https://i.pravatar.cc/100',
+                          height: 40,
+                          width: 40,
+                          boxShape: BoxShape.circle,
+                        ),
+                        space12W,
+                        const CustomText(
+                          'Sneaker Head',
+                          fontWeight: FontWeight.bold,
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () => context.push(AppRoutes.storeDetails),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: AppColors.kBorderColor),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const CustomText(
+                              'Visit Store',
+                              fontSize: 12,
                             ),
                           ),
-                          space12W,
-                          const CustomText('Sneaker Head'),
-                          // const Spacer(),
-                          // CustomButton(
-                          //   text: 'Visit Store',
-                          //   onPressed: () =>
-                          //       context.push(AppRoutes.storeDetails),
-                          //   isExpanding: true,
-                          //   isOutlined: true,
-                          //   borderRadius: 8,
-                          // ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
+                  ),
+                  space8H,
+
+                  // 5. Description Section
+                  const CustomText('Description', fontWeight: FontWeight.bold),
+                  space8H,
+                  const CustomText(
+                    'This stunning 1999 Base Set Charizard features a high-gloss holofoil pattern and pristine centering. Graded PSA 9 (Mint), it',
+                    color: AppColors.kGreyTextColor,
+                    height: 1.5,
+                    fontSize: 13,
                   ),
                 ],
               ),
@@ -209,28 +305,37 @@ class ProductDetailsPage extends ConsumerWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: CustomButton(
-                text: 'Add To Cart',
-                onPressed: () {
-                  CustomSnackbar.show(context, 'Added to Cart');
-                },
-                isOutlined: true,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: const BoxDecoration(
+          color: AppColors.kBackgroundColor,
+          border: Border(
+            top: BorderSide(color: AppColors.kBorderColor, width: 0.5),
+          ),
+        ),
+        child: SafeArea(
+          child: Row(
+            children: [
+              Expanded(
+                child: CustomButton(
+                  text: 'Add To Cart',
+                  onPressed: () => context.push(AppRoutes.cart),
+                  isOutlined: true,
+                  textColor: AppColors.kAccentColor,
+                  borderColor: AppColors.kAccentColor,
+                  borderRadius: 30,
+                ),
               ),
-            ),
-            space12W,
-            Expanded(
-              child: CustomButton(
-                isExpanding: true,
-                text: 'Buy Now',
-                onPressed: () => context.push(AppRoutes.checkout),
+              space16W,
+              Expanded(
+                child: CustomButton(
+                  text: 'Buy Now',
+                  onPressed: () => context.push(AppRoutes.checkout),
+                  borderRadius: 30,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -8,7 +8,7 @@ class ReviewTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.kBorderColor.withOpacity(0.1),
+        border: Border.all(color: AppColors.kBorderColor),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -16,14 +16,20 @@ class ReviewTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(backgroundImage: NetworkImage('https://i.pravatar.cc/150')),
+              const CircleAvatar(
+                backgroundImage: NetworkImage('https://i.pravatar.cc/150'),
+              ),
               space12W,
               const Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText('Nm Sujon', fontWeight: FontWeight.bold),
-                    CustomText('June 15, 2026', fontSize: 10, color: AppColors.kGreyTextColor),
+                    CustomText(
+                      'June 15, 2026',
+                      fontSize: 10,
+                      color: AppColors.kGreyTextColor,
+                    ),
                   ],
                 ),
               ),
@@ -37,7 +43,8 @@ class ReviewTile extends StatelessWidget {
           space8H,
           const CustomText(
             'PSA 10 Gem Mint. Extremely rare shadowless edition from the base set. Perfect centering...',
-            fontSize: 12, color: AppColors.kGreyTextColor,
+            fontSize: 12,
+            color: AppColors.kGreyTextColor,
           ),
         ],
       ),
@@ -49,20 +56,29 @@ class SizeOption extends StatelessWidget {
   final String label;
   final bool isSelected;
   final VoidCallback onTap;
-  const SizeOption({super.key, required this.label, required this.isSelected, required this.onTap});
+  const SizeOption({
+    super.key,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 40, width: 40,
+        height: 40,
+        width: 40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.kPrimaryColor : Colors.white,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: CustomText(label, color: isSelected ? Colors.white : Colors.black),
+        child: CustomText(
+          label,
+          color: isSelected ? Colors.white : Colors.black,
+        ),
       ),
     );
   }
