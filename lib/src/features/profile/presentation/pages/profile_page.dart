@@ -42,17 +42,17 @@ class ProfilePage extends StatelessWidget {
             ProfileMenuItem(
               title: AppStaticStrings.address,
               icon: AppAssets.location,
-              onTap: () {},
+              onTap: () => context.push(AppRoutes.selectAddress),
             ),
             ProfileMenuItem(
               title: AppStaticStrings.changePassword,
               icon: AppAssets.lock,
-              onTap: () {},
+              onTap: () => context.push(AppRoutes.changePassword),
             ),
             ProfileMenuItem(
               title: AppStaticStrings.helpSupport,
               icon: AppAssets.support24,
-              onTap: () {},
+              onTap: () => context.push(AppRoutes.support),
             ),
             // space16H,
             const CustomText(
@@ -63,14 +63,14 @@ class ProfilePage extends StatelessWidget {
             ProfileMenuItem(
               title: AppStaticStrings.privacyPolicy,
               icon: AppAssets.policyIcon,
-              onTap: () {},
+              onTap: () => context.push(AppRoutes.privacyPolicy),
             ),
             ProfileMenuItem(
               title: AppStaticStrings.termsCondition,
               icon: AppAssets.termsIcon,
-              onTap: () {},
+              onTap: () => context.push(AppRoutes.termsCondition),
             ),
-            space24H,
+            // space24H,
             ProfileMenuItem(
               title: AppStaticStrings.logOut,
               icon: AppAssets.logout,

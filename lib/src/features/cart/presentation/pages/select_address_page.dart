@@ -30,7 +30,15 @@ class SelectAddressPage extends ConsumerWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Select Address')),
+      appBar: AppBar(
+        title: const Text('Select Address'),
+        actions: [
+          DefaultGreyCircleContainer(
+            customIcon: Icons.add,
+            onTap: () => context.push(AppRoutes.setNewAddress),
+          ),
+        ],
+      ),
       body: ListView.builder(
         padding: AppPadding.getPadding12H(context),
         itemCount: sampleAddresses.length,
@@ -79,6 +87,28 @@ class SelectAddressPage extends ConsumerWidget {
                 ref.read(selectedAddressProvider.notifier).state = address;
                 context.pop();
               },
+
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ButtonTapWidget(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: SvgPicture.asset(AppAssets.edit, height: 20),
+                    ),
+                  ),
+                  ButtonTapWidget(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Icon(
+                        Icons.delete,
+                        color: AppColors.kRedColor,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           );
         },

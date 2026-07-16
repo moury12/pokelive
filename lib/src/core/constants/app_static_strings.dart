@@ -96,5 +96,35 @@ class AppStaticStrings {
   static const String submitReview = 'Submit Review';
   static const String reviewHint =
       'Tell us what you liked or disliked about this purchase...';
+
+  // Shipping Address
+  static const String setNewShippingAddress = 'Set New Shipping Address';
+  static const String streetAddress = 'Street Address';
+  static const String apartment = 'Apartment';
+  static const String city = 'City';
+  static const String postalCode = 'Postal Code';
+  static const String state = 'State';
+
+  // Become Seller
+  static const String becomeSeller = 'Become a Seller';
+  static const String sellerSub =
+      'Submit your details to start live selling on PokéLive. Our team will review your application within 24-48 hours.';
+  static const String personalContactInfo = 'Personal & Contact Info';
+  static const String identityVerification = 'Identity Verification';
+  static const String idDocumentType = 'Id Document Type';
+  static const String uploadFront = 'Upload Front Side';
+  static const String uploadBack = 'Upload Back Side';
+  static const String storeProductProfile = 'Store & Product Profile';
+  static const String storeDescription = 'Store Description';
+  static const String primaryCategory = 'Primary Selling Category';
+  static const String sellerAgreement =
+      'I Agree to the Pokelive seller policy and stripe account terms of use';
+
+  // Support & Settings
+  static const String support = 'Support';
+  static const String subject = 'Subject';
+  static const String writeHere = 'Write here.......';
+  static const String send = 'Send';
+  static const String updatePassword = 'Update Password';
 }
 

@@ -86,6 +86,30 @@ class AppRouter {
         path: AppRoutes.orderHistory,
         builder: (context, state) => const OrderHistoryPage(),
       ),
+      GoRoute(
+        path: AppRoutes.setNewAddress,
+        builder: (context, state) => const SetNewAddressPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.becomeSeller,
+        builder: (context, state) => const BecomeSellerPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePasswordPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.support,
+        builder: (context, state) => const SupportPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.termsCondition,
+        builder: (context, state) => const TermsConditionPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.privacyPolicy,
+        builder: (context, state) => const PrivacyPolicyPage(),
+      ),
     ],
   );
 }

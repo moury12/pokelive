@@ -28,4 +28,11 @@ class AppRoutes {
   static const String editProfile = '/edit-profile';
   static const String activeOrders = '/active-orders';
   static const String orderHistory = '/order-history';
+
+  static const String setNewAddress = '/set-new-address';
+  static const String becomeSeller = '/become-seller';
+  static const String changePassword = '/change-password';
+  static const String support = '/support';
+  static const String termsCondition = '/terms-condition';
+  static const String privacyPolicy = '/privacy-policy';
 }

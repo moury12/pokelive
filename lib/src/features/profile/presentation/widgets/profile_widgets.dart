@@ -92,7 +92,10 @@ class SellerPromoCard extends StatelessWidget {
             color: AppColors.kGreyTextColor,
           ),
           space8H,
-          CustomButton(text: AppStaticStrings.applyNow, onPressed: () {}),
+          CustomButton(
+            text: AppStaticStrings.applyNow,
+            onPressed: () => context.push(AppRoutes.becomeSeller),
+          ),
         ],
       ),
     );

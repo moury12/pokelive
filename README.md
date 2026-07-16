@@ -8,3 +8,4 @@ mainatain structure
 make generic custom widgets for simmilar design and place them in different file inside widget folder of that particular feature folder
 use my custom widget theme nd colors 
 use spacing 8 or 12 padding also 12 only 
+ add all static texts on app static strings class 
