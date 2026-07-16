@@ -4,6 +4,7 @@ export 'theme/app_theme.dart';
 
 // Utils
 export 'utils/app_constants.dart';
+export 'utils/app_image_picker.dart';
 
 
 // Widgets

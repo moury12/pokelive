@@ -35,4 +35,9 @@ class AppRoutes {
   static const String support = '/support';
   static const String termsCondition = '/terms-condition';
   static const String privacyPolicy = '/privacy-policy';
+
+  static const String sellerSettings = '/seller-settings';
+  static const String payoutHistory = '/payout-history';
+  static const String editStorefront = '/edit-storefront';
+  static const String senderAddress = '/sender-address';
 }

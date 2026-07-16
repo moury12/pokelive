@@ -169,31 +169,34 @@ class EditAvatarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          const CustomNetworkImage(
-            imageUrl: 'https://i.pravatar.cc/150?u=nm',
-            height: 100,
-            width: 100,
-            radius: 50,
-          ),
-          Container(
-            padding: const EdgeInsets.all(4),
-            decoration: const BoxDecoration(
-              color: AppColors.kBackgroundColor,
-              shape: BoxShape.circle,
+      child: ButtonTapWidget(
+        onTap: () => AppImagePicker.pickImage(context),
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            const CustomNetworkImage(
+              imageUrl: 'https://i.pravatar.cc/150?u=nm',
+              height: 100,
+              width: 100,
+              radius: 50,
             ),
-            child: SvgPicture.asset(
-              AppAssets.edit,
-              height: 20,
-              colorFilter: const ColorFilter.mode(
-                AppColors.kAccentColor,
-                BlendMode.srcIn,
+            Container(
+              padding: const EdgeInsets.all(4),
+              decoration: const BoxDecoration(
+                color: AppColors.kBackgroundColor,
+                shape: BoxShape.circle,
+              ),
+              child: SvgPicture.asset(
+                AppAssets.edit,
+                height: 20,
+                colorFilter: const ColorFilter.mode(
+                  AppColors.kAccentColor,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -178,27 +178,33 @@ class SellerFilePickerBox extends StatelessWidget {
       children: [
         CustomText(title, variant: TextVariant.titleSmall),
         space4H,
-        Container(
-          height: 120,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(color: AppColors.kBorderColor),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                asset,
-                height: 24,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.kGreyTextColor,
-                  BlendMode.srcIn,
+        ButtonTapWidget(
+          onTap: () async {
+            final file = await AppImagePicker.pickImage(context);
+            if (file != null) onPicked(file.path);
+          },
+          child: Container(
+            height: 120,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.kBorderColor),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  asset,
+                  height: 24,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.kGreyTextColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              space8H,
-              CustomText('Upload $title', color: AppColors.kGreyTextColor),
-            ],
+                space8H,
+                CustomText('Upload $title', color: AppColors.kGreyTextColor),
+              ],
+            ),
           ),
         ),
       ],

@@ -110,6 +110,22 @@ class AppRouter {
         path: AppRoutes.privacyPolicy,
         builder: (context, state) => const PrivacyPolicyPage(),
       ),
+      GoRoute(
+        path: AppRoutes.sellerSettings,
+        builder: (context, state) => const SellerSettingsPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.payoutHistory,
+        builder: (context, state) => const PayoutHistoryPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.editStorefront,
+        builder: (context, state) => const EditStorefrontPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.senderAddress,
+        builder: (context, state) => const SenderAddressPage(),
+      ),
     ],
   );
 }

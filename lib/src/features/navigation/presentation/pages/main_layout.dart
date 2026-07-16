@@ -6,7 +6,7 @@ class NavigationPage extends ConsumerWidget {
   static const List<Widget> _screens = [
     HomePage(),
     CategoryPage(),
-    Center(child: Text('Seller Hub')),
+    SellerHubPage(),
     CartPage(),
     ProfilePage(),
   ];

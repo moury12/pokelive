@@ -126,5 +126,39 @@ class AppStaticStrings {
   static const String writeHere = 'Write here.......';
   static const String send = 'Send';
   static const String updatePassword = 'Update Password';
+
+  // Seller Hub
+  static const String sellerHub = 'Seller Hub';
+  static const String readyToGoLive = 'Ready to Go Live';
+  static const String liveSub =
+      'Start a live stream to sell items instantly to your viewers.';
+  static const String createStream = 'Create Stream';
+  static const String myInventory = 'My Inventory';
+  static const String activeItem = 'active item';
+  static const String ordersToShip = 'items to ship';
+  static const String availableBalance = 'Available Balance';
+  static const String requestPayout = 'Request Payout';
+  static const String pending = 'Pending';
+
+  static const String sellerHubSettings = 'Seller Hub Settings';
+  static const String financePayouts = 'Finance & Payouts';
+  static const String manageBank = 'Manage Bank Account (Stripe)';
+  static const String payoutHistory = 'Payout History';
+  static const String storePreferences = 'Store Preferences';
+  static const String editStorefront = 'Edit Storefront';
+  static const String myReviews = 'My Reviews';
+  static const String shippingReturns = 'Shipping & Returns';
+  static const String sellerDispatchedAddress = 'Seller Dispatched Address';
+
+  static const String totalWithdrawn = 'Total withdrawn';
+  static const String recentPayouts = 'Recent Payouts';
+
+  static const String storeName = 'Store Name';
+  static const String storeBio = 'Store Bio';
+  static const String senderAddress = 'Sender Address';
+  static const String senderAddressSub =
+      'This address will be printed as the Sender Address on all your Royal Mail and Evri shipping labels.';
+  static const String useAddressForReturns = 'Use this address for buyer returns';
 }
+
 
