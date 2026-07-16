@@ -92,7 +92,7 @@ class AppTheme {
       ),
       labelMedium: TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: AppColors.kTextColor,
       ),
       labelSmall: TextStyle(

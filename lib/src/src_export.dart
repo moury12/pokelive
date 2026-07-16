@@ -15,6 +15,8 @@ export 'features/live/live_export.dart';
 export 'features/category/category_export.dart';
 export 'features/product/product_export.dart';
 export 'features/cart/cart_export.dart';
+export 'features/profile/profile_export.dart';
+export 'features/purchase/purchase_export.dart';
 
 // Routes
 export 'core/routes/app_router.dart';

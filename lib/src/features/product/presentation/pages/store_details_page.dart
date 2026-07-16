@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../src_export.dart';
-import '../controllers/store_controller.dart';
 
 class StoreDetailsPage extends ConsumerWidget {
   const StoreDetailsPage({super.key});
@@ -19,9 +18,11 @@ class StoreDetailsPage extends ConsumerWidget {
               clipBehavior: Clip.none,
               children: [
                 GestureDetector(
-                  onTap: () => context.push(AppRoutes.storyView), // Story view/Live
+                  onTap: () =>
+                      context.push(AppRoutes.storyView), // Story view/Live
                   child: const CustomNetworkImage(
-                    imageUrl: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000',
+                    imageUrl:
+                        'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000',
                     height: 220,
                     width: double.infinity,
                   ),
@@ -35,10 +36,10 @@ class StoreDetailsPage extends ConsumerWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: -30,
+                  bottom: -10,
                   left: 16,
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Stack(
                         alignment: Alignment.bottomCenter,
@@ -49,47 +50,63 @@ class StoreDetailsPage extends ConsumerWidget {
                             height: 80,
                             width: 80,
                             boxShape: BoxShape.circle,
-                            border: Border.fromBorderSide(BorderSide(color: AppColors.kPrimaryColor, width: 2)),
+                            border: Border.fromBorderSide(
+                              BorderSide(
+                                color: AppColors.kPrimaryColor,
+                                width: 2,
+                              ),
+                            ),
                           ),
                           Positioned(
                             bottom: -8,
-                            child: const LiveWidget(),
-                          )
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 4,
+                                  vertical: 2,
+                                ),
+                                child: CustomText(
+                                  '● LIVE',
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       space12W,
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 35),
-                        child: CustomText('Sneaker Head', variant: TextVariant.titleLarge),
+                      CustomText(
+                        'Sneaker Head',
+                        variant: TextVariant.titleLarge,
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
-            const SizedBox(height: 40),
-
-            // 2. Stats & Bio
+            space8H,
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: AppPadding.getPadding12(context),
               child: Column(
+                spacing: 6,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Row(
                     children: [
                       Icon(Icons.star, color: AppColors.kYellowColor, size: 16),
-                      CustomText(' 4.5  |  120 Reviews', fontSize: 12, color: AppColors.kGreyTextColor),
+                      const CustomText(' 4.5  |  120 Reviews', fontSize: 12),
                     ],
                   ),
-                  space8H,
                   const CustomText(
                     'Collector of vintage items. Quick shipping via Royal Mail.',
                     fontSize: 12,
                     color: AppColors.kGreyTextColor,
                   ),
-                  space24H,
-
-                  // 3. Custom Tab Switcher
                   Row(
                     children: [
                       _buildTabBtn(ref, 'Store', 0, selectedTab),
@@ -97,9 +114,6 @@ class StoreDetailsPage extends ConsumerWidget {
                       _buildTabBtn(ref, 'Reviews', 1, selectedTab),
                     ],
                   ),
-                  space16H,
-
-                  // 4. Reactive Content Grid/List
                   selectedTab == 0 ? _buildProductGrid() : _buildReviewList(),
                 ],
               ),
@@ -117,22 +131,28 @@ class StoreDetailsPage extends ConsumerWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.kPrimaryColor : AppColors.kBorderColor.withOpacity(0.2),
+          color: isActive
+              ? AppColors.kPrimaryColor
+              : AppColors.kBorderColor.withOpacity(0.2),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: CustomText(label, color: isActive ? Colors.white : AppColors.kGreyTextColor),
+        child: CustomText(
+          label,
+          color: isActive ? Colors.white : AppColors.kGreyTextColor,
+        ),
       ),
     );
   }
 
   Widget _buildProductGrid() {
     return GridView.builder(
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 12,
-        mainAxisSpacing: 16,
+        mainAxisSpacing: 12,
         childAspectRatio: 0.7,
       ),
       itemCount: 4,
@@ -142,6 +162,7 @@ class StoreDetailsPage extends ConsumerWidget {
 
   Widget _buildReviewList() {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 5,

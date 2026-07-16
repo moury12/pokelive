@@ -1,5 +1,4 @@
 
-samples, guidance on mobile development, and a full API reference.
 do this product details page with reviews from there it will redirect to store details pages 
 also do the cart and check out page during check out use can select shipping select address 
 for product details review and store will be one same folder 

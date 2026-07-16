@@ -74,6 +74,18 @@ class AppRouter {
         path: AppRoutes.storyView,
         builder: (context, state) => const StoryViewPage(),
       ),
+      GoRoute(
+        path: AppRoutes.editProfile,
+        builder: (context, state) => const EditProfilePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.activeOrders,
+        builder: (context, state) => const ActiveOrdersPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.orderHistory,
+        builder: (context, state) => const OrderHistoryPage(),
+      ),
     ],
   );
 }

@@ -65,4 +65,36 @@ class AppStaticStrings {
   static const String viewAll = 'View All';
 
   static const String raffle = 'Raffle';
+
+  // Profile
+  static const String myProfile = 'My Profile';
+  static const String editProfile = 'Edit Profile';
+  static const String startSellingTitle = 'Start Selling on PokéLive';
+  static const String startSellingSub =
+      'Apply as a verified seller to go live and sell your collectibles to our community.';
+  static const String applyNow = 'Apply Now';
+
+  static const String myPurchases = 'My Purchases';
+  static const String activeOrders = 'Active Orders';
+  static const String ordersReviews = 'Orders & Reviews';
+
+  static const String settings = 'Settings';
+  static const String address = 'Address';
+  static const String changePassword = 'Change Password';
+  static const String helpSupport = 'Help & Support';
+
+  static const String legal = 'Legal';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String termsCondition = 'Terms & Condition';
+  static const String logOut = 'Log Out';
+
+  // Purchases
+  static const String myActiveOrders = 'My Active Orders';
+  static const String ordersReview = 'Orders & Review';
+  static const String writeAReview = 'Write A Review';
+  static const String ratePurchase = 'Rate Your Purchase';
+  static const String submitReview = 'Submit Review';
+  static const String reviewHint =
+      'Tell us what you liked or disliked about this purchase...';
 }
+

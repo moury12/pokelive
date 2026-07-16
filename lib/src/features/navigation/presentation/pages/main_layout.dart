@@ -8,7 +8,7 @@ class NavigationPage extends ConsumerWidget {
     CategoryPage(),
     Center(child: Text('Seller Hub')),
     CartPage(),
-    Center(child: Text('Profile')),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -24,4 +24,8 @@ class AppRoutes {
   static const String checkout = '/checkout';
   static const String selectAddress = '/select-address';
   static const String storyView = '/story-view';
+
+  static const String editProfile = '/edit-profile';
+  static const String activeOrders = '/active-orders';
+  static const String orderHistory = '/order-history';
 }
