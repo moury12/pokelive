@@ -40,4 +40,11 @@ class AppRoutes {
   static const String payoutHistory = '/payout-history';
   static const String editStorefront = '/edit-storefront';
   static const String senderAddress = '/sender-address';
+
+  // Seller Inventory
+  static const String sellerInventory = '/seller-inventory';
+  static const String addProduct = '/add-product';
+
+  // Sales & Orders
+  static const String salesOrders = '/sales-orders';
 }

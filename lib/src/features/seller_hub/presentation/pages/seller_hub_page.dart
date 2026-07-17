@@ -49,16 +49,22 @@ class SellerHubPage extends StatelessWidget {
           children: [
             const ReadyToLiveCard(),
             space16H,
-            const HubInfoCard(
-              title: AppStaticStrings.myInventory,
-              subtitle: '15 ${AppStaticStrings.activeItem}',
-              icon: AppAssets.inventoryIcon,
+            ButtonTapWidget(
+              onTap: () => context.push(AppRoutes.sellerInventory),
+              child: const HubInfoCard(
+                title: AppStaticStrings.myInventory,
+                subtitle: '15 ${AppStaticStrings.activeItem}',
+                icon: AppAssets.inventoryIcon,
+              ),
             ),
             space12H,
-            const HubInfoCard(
-              title: 'Orders',
-              subtitle: '3 ${AppStaticStrings.ordersToShip}',
-              icon: AppAssets.bagIcon,
+            ButtonTapWidget(
+              onTap: () => context.push(AppRoutes.salesOrders),
+              child: const HubInfoCard(
+                title: 'Orders',
+                subtitle: '3 ${AppStaticStrings.ordersToShip}',
+                icon: AppAssets.bagIcon,
+              ),
             ),
             space12H,
             const HubBalanceCard(),

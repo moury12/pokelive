@@ -159,6 +159,26 @@ class AppStaticStrings {
   static const String senderAddressSub =
       'This address will be printed as the Sender Address on all your Royal Mail and Evri shipping labels.';
   static const String useAddressForReturns = 'Use this address for buyer returns';
+
+  // Inventory Management
+  static const String productImages = 'Product Images';
+  static const String uploadFrontSide = 'Upload Front Side';
+  static const String productTitle = 'Product Title';
+  static const String productDescription = 'Product Description';
+  static const String price = 'Price';
+  static const String quantity = 'Quantity';
+  static const String packageWeight = 'Package Weight';
+  static const String listProduct = 'List Product';
+
+  // Sales & Orders
+  static const String salesOrders = 'Sales & Orders';
+  static const String toShip = 'To Ship';
+  static const String shipped = 'Shipped';
+  static const String completed = 'Completed';
+  static const String generateShippingLabel = 'Generate Shipping Label';
+  static const String markAsShipped = 'Mark as Shipped';
+  static const String markAsDelivered = 'Mark as Delivered';
+  static const String cancel = 'Cancel';
 }
 
 

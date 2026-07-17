@@ -126,6 +126,18 @@ class AppRouter {
         path: AppRoutes.senderAddress,
         builder: (context, state) => const SenderAddressPage(),
       ),
+      GoRoute(
+        path: AppRoutes.sellerInventory,
+        builder: (context, state) => const SellerInventoryPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.addProduct,
+        builder: (context, state) => const AddProductPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.salesOrders,
+        builder: (context, state) => const SalesOrdersPage(),
+      ),
     ],
   );
 }
