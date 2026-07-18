@@ -22,7 +22,7 @@ class ButtonTapWidget extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         customBorder: shape,
-        splashColor: AppColors.kPrimaryColor.withValues(alpha: .2),
+        splashColor: AppColors.kAccentColor.withValues(alpha: .2),
         onTap: onTap,
         borderRadius: BorderRadius.circular(radius ?? 12),
         child: child,

@@ -6,22 +6,16 @@ class AddProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        title: const CustomText(AppStaticStrings.myInventory,
-            variant: TextVariant.headlineMedium),
-        actions: [
-          DefaultGreyCircleContainer(customIcon: Icons.add),
-          space12W,
-        ],
-      ),
+      appBar: AppBar(title: const Text(AppStaticStrings.myInventory)),
       body: SingleChildScrollView(
-        padding: AppPadding.getPadding12(context),
+        padding: AppPadding.getPadding12H(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(AppStaticStrings.productImages,
-                variant: TextVariant.titleSmall),
+            const CustomText(
+              AppStaticStrings.productImages,
+              variant: TextVariant.titleSmall,
+            ),
             space8H,
             const ImageUploadPlaceholder(),
             space12H,
@@ -38,8 +32,9 @@ class AddProductPage extends StatelessWidget {
             ),
             space16H,
             const CustomTextField(
-                title: AppStaticStrings.productTitle,
-                hintText: 'e.g Sneaker Head'),
+              title: AppStaticStrings.productTitle,
+              hintText: 'e.g Sneaker Head',
+            ),
             space12H,
             const CustomTextField(
               title: AppStaticStrings.productDescription,
@@ -57,24 +52,31 @@ class AddProductPage extends StatelessWidget {
               children: [
                 const Expanded(
                   child: CustomTextField(
-                      title: AppStaticStrings.price, hintText: 'Unit Price'),
+                    title: AppStaticStrings.price,
+                    hintText: 'Unit Price',
+                  ),
                 ),
                 space12W,
                 const Expanded(
                   child: CustomTextField(
-                      title: AppStaticStrings.quantity,
-                      hintText: 'Item quantity'),
+                    title: AppStaticStrings.quantity,
+                    hintText: 'Item quantity',
+                  ),
                 ),
               ],
             ),
             space12H,
             const CustomTextField(
-                title: AppStaticStrings.packageWeight, hintText: 'e.g 1000gm'),
+              title: AppStaticStrings.packageWeight,
+              hintText: 'e.g 1000gm',
+            ),
             space24H,
             CustomButton(
               text: AppStaticStrings.listProduct,
               onPressed: () => context.pop(),
             ),
+            space24H,
+            space24H,
           ],
         ),
       ),

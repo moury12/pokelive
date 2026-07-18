@@ -7,12 +7,10 @@ class PayoutHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(),
-        title: const CustomText(AppStaticStrings.payoutHistory,
-            variant: TextVariant.headlineMedium),
+        title: const Text(AppStaticStrings.payoutHistory),
       ),
       body: SingleChildScrollView(
-        padding: AppPadding.getPadding12(context),
+        padding: AppPadding.getPadding12H(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

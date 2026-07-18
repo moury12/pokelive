@@ -23,11 +23,14 @@ class SellerOrderCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
               CustomText('#PL-20246', color: AppColors.kGreyTextColor),
-              CustomText('Jun 12, 2026, 04:30 PM',
-                  fontSize: 10, color: AppColors.kGreyTextColor),
+              CustomText(
+                'Jun 12, 2026, 04:30 PM',
+                fontSize: 12,
+                color: AppColors.kGreyTextColor,
+              ),
             ],
           ),
-          space12H,
+          space8H,
           // Buyer Info
           Row(
             children: [
@@ -43,8 +46,11 @@ class SellerOrderCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText('Nm Sujon', variant: TextVariant.titleSmall),
-                    CustomText('0181456546465',
-                        fontSize: 10, color: AppColors.kGreyTextColor),
+                    CustomText(
+                      '0181456546465',
+                      fontSize: 12,
+                      color: AppColors.kGreyTextColor,
+                    ),
                   ],
                 ),
               ),
@@ -54,19 +60,22 @@ class SellerOrderCard extends StatelessWidget {
           // Delivery Address
           const Row(
             children: [
-              Icon(Icons.location_on_outlined,
-                  size: 14, color: AppColors.kGreyTextColor),
+              Icon(
+                Icons.location_on_outlined,
+                size: 14,
+                color: AppColors.kGreyTextColor,
+              ),
               space4W,
               Expanded(
                 child: CustomText(
                   'Dhaka, Dhaka city North, Mohakhali',
-                  fontSize: 11,
+                  fontSize: 12,
                   color: AppColors.kGreyTextColor,
                 ),
               ),
             ],
           ),
-          space12H,
+          space8H,
           // Product Row
           const Row(
             children: [
@@ -87,24 +96,33 @@ class SellerOrderCard extends StatelessWidget {
                   ],
                 ),
               ),
-              CustomText('1 item',
-                  color: AppColors.kGreyTextColor, fontSize: 10),
+              CustomText(
+                '1 item',
+                color: AppColors.kGreyTextColor,
+                fontSize: 12,
+              ),
             ],
           ),
-          space12H,
+          space8H,
           // Carrier
           const Row(
             children: [
-              Icon(Icons.local_shipping_outlined,
-                  size: 14, color: AppColors.kGreyTextColor),
+              Icon(
+                Icons.local_shipping_outlined,
+                size: 14,
+                color: AppColors.kGreyTextColor,
+              ),
               space4W,
-              CustomText('Carrier: Royal Mail',
-                  fontSize: 11, color: AppColors.kGreyTextColor),
+              CustomText(
+                'Carrier: Royal Mail',
+                fontSize: 12,
+                color: AppColors.kGreyTextColor,
+              ),
             ],
           ),
           // Action buttons (hidden on Completed tab)
           if (tabIndex != 2) ...[
-            space12H,
+            space8H,
             CustomButton(
               text: tabIndex == 0
                   ? AppStaticStrings.generateShippingLabel
@@ -119,6 +137,8 @@ class SellerOrderCard extends StatelessWidget {
                     child: CustomButton(
                       text: AppStaticStrings.markAsShipped,
                       isOutlined: true,
+                      textColor: AppColors.kGreyTextColor,
+                      borderColor: AppColors.kGreyTextColor,
                       onPressed: () {},
                     ),
                   ),
@@ -170,7 +190,7 @@ class OrderTabChip extends StatelessWidget {
         child: CustomText(
           label,
           color: isSelected ? Colors.white : AppColors.kGreyTextColor,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

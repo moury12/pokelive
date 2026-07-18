@@ -12,8 +12,8 @@ class SellerHubPage extends StatelessWidget {
           children: [
             const CustomNetworkImage(
               imageUrl: 'https://i.pravatar.cc/100',
-              height: 32,
-              width: 32,
+              height: 40,
+              width: 40,
               boxShape: BoxShape.circle,
             ),
             space8W,
@@ -28,6 +28,7 @@ class SellerHubPage extends StatelessWidget {
                       ' 4.5  120 Reviews',
                       fontSize: 12,
                       color: AppColors.kGreyTextColor,
+                      fontWeight: FontWeight.bold,
                     ),
                   ],
                 ),
@@ -44,7 +45,7 @@ class SellerHubPage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        padding: AppPadding.getPadding12(context),
+        padding: AppPadding.getPadding12H(context),
         child: Column(
           children: [
             const ReadyToLiveCard(),

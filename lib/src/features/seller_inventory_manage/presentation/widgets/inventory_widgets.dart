@@ -30,19 +30,38 @@ class InventoryProductCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomText('Nike Sneaker',
-                        variant: TextVariant.titleSmall),
+                    const CustomText(
+                      'Nike Sneaker',
+                      variant: TextVariant.titleSmall,
+                    ),
                     Row(
                       children: [
-                        SvgPicture.asset(
-                          AppAssets.edit,
-                          height: 16,
-                          colorFilter: const ColorFilter.mode(
-                              AppColors.kTextColor, BlendMode.srcIn),
+                        ButtonTapWidget(
+                          onTap: () {
+                            context.push(AppRoutes.addProduct);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(6),
+                            child: SvgPicture.asset(
+                              AppAssets.edit,
+                              height: 16,
+                              // colorFilter: const ColorFilter.mode(
+                              //     AppColors.kTextColor, BlendMode.srcIn),
+                            ),
+                          ),
                         ),
                         space8W,
-                        const Icon(Icons.delete_outline,
-                            color: Colors.red, size: 18),
+                        ButtonTapWidget(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(6),
+                            child: const Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                              size: 18,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -57,8 +76,10 @@ class InventoryProductCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomText('£2,500',
-                        variant: TextVariant.titleMedium),
+                    const CustomText(
+                      '£2,500',
+                      variant: TextVariant.titleMedium,
+                    ),
                     CartQuantityCounter(
                       count: 1,
                       onIncrement: () {},
@@ -81,26 +102,35 @@ class ImageUploadPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.kBorderColor),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            AppAssets.camera,
-            height: 32,
-            colorFilter: const ColorFilter.mode(
-                AppColors.kGreyTextColor, BlendMode.srcIn),
-          ),
-          space8H,
-          const CustomText(AppStaticStrings.uploadFrontSide,
-              color: AppColors.kGreyTextColor),
-        ],
+    return ButtonTapWidget(
+      onTap: () {
+        AppImagePicker.pickImage(context);
+      },
+      child: Container(
+        height: 150,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.kBorderColor),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AppAssets.camera,
+              height: 32,
+              colorFilter: const ColorFilter.mode(
+                AppColors.kGreyTextColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            space8H,
+            const CustomText(
+              AppStaticStrings.uploadFrontSide,
+              color: AppColors.kGreyTextColor,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -112,14 +142,19 @@ class SmallImageUploadBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.kBorderColor),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const Center(
-        child: Icon(Icons.add, color: AppColors.kGreyTextColor),
+    return ButtonTapWidget(
+      onTap: () {
+        AppImagePicker.pickImage(context);
+      },
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.kBorderColor),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: const Center(
+          child: Icon(Icons.add, color: AppColors.kGreyTextColor),
+        ),
       ),
     );
   }

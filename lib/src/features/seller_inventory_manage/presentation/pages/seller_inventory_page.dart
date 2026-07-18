@@ -10,8 +10,7 @@ class SellerInventoryPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
-        title: const CustomText(AppStaticStrings.myInventory,
-            variant: TextVariant.headlineMedium),
+        title: const Text(AppStaticStrings.myInventory),
         actions: [
           DefaultGreyCircleContainer(
             customIcon: Icons.add,
@@ -23,7 +22,7 @@ class SellerInventoryPage extends ConsumerWidget {
       body: Column(
         children: [
           Padding(
-            padding: AppPadding.getPadding12(context),
+            padding: AppPadding.getPadding12H(context),
             child: const CustomTextField(
               hintText: 'Search Product...',
               prefixIcon: Icon(Icons.search, color: AppColors.kGreyTextColor),
@@ -31,7 +30,7 @@ class SellerInventoryPage extends ConsumerWidget {
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: AppPadding.getPadding12(context),
             child: Row(
               children: ['All', 'Active', 'Stock Out'].map((filter) {
                 return Padding(
@@ -47,10 +46,10 @@ class SellerInventoryPage extends ConsumerWidget {
               }).toList(),
             ),
           ),
-          space12H,
+          // space12H,
           Expanded(
             child: ListView.builder(
-              padding: AppPadding.getPadding12(context),
+              padding: AppPadding.getPadding12H(context),
               itemCount: 4,
               itemBuilder: (context, index) => const InventoryProductCard(),
             ),

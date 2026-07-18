@@ -11,7 +11,7 @@ class ReadyToLiveCard extends StatelessWidget {
       padding: AppPadding.getPadding16(context),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [AppColors.kPrimaryColor, Color(0xFFEDB3B2)],
+          colors: [Color(0xff4F46E5), Color(0xffEF4444)],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -19,8 +19,10 @@ class ReadyToLiveCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const CustomText(AppStaticStrings.readyToGoLive,
-              variant: TextVariant.headlineSmall),
+          const CustomText(
+            AppStaticStrings.readyToGoLive,
+            variant: TextVariant.headlineSmall,
+          ),
           space8H,
           const CustomText(
             AppStaticStrings.liveSub,
@@ -60,18 +62,13 @@ class HubInfoCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: AppColors.kBorderColor.withValues(alpha: 0.2),
-              shape: BoxShape.circle,
-            ),
-            child: SvgPicture.asset(
-              icon,
-              height: 20,
-              colorFilter: const ColorFilter.mode(
-                  AppColors.kTextColor, BlendMode.srcIn),
-            ),
+          SvgPicture.asset(
+            icon,
+            // height: 40,
+            // colorFilter: const ColorFilter.mode(
+            //   AppColors.kTextColor,
+            //   BlendMode.srcIn,
+            // ),
           ),
           space12W,
           Expanded(
@@ -79,13 +76,19 @@ class HubInfoCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(title, variant: TextVariant.titleMedium),
-                CustomText(subtitle,
-                    color: AppColors.kGreyTextColor, fontSize: 12),
+                CustomText(
+                  subtitle,
+                  color: AppColors.kGreyTextColor,
+                  fontSize: 12,
+                ),
               ],
             ),
           ),
-          const Icon(Icons.arrow_forward,
-              color: AppColors.kGreyTextColor, size: 18),
+          const Icon(
+            Icons.arrow_forward,
+            color: AppColors.kGreyTextColor,
+            size: 18,
+          ),
         ],
       ),
     );
@@ -107,23 +110,33 @@ class HubBalanceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomText(AppStaticStrings.availableBalance,
-              fontSize: 12, color: AppColors.kGreyTextColor),
-          const CustomText('£350.00',
-              fontSize: 32, fontWeight: FontWeight.bold),
+          const CustomText(
+            AppStaticStrings.availableBalance,
+            fontSize: 12,
+            color: AppColors.kGreyTextColor,
+          ),
+          const CustomText(
+            '£350.00',
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
           const Row(
             children: [
-              Icon(Icons.access_time, size: 14, color: AppColors.kGreyTextColor),
+              Icon(
+                Icons.access_time,
+                size: 14,
+                color: AppColors.kGreyTextColor,
+              ),
               space4W,
-              CustomText('Pending: £120.00',
-                  fontSize: 10, color: AppColors.kGreyTextColor),
+              CustomText(
+                'Pending: £120.00',
+                fontSize: 10,
+                color: AppColors.kGreyTextColor,
+              ),
             ],
           ),
           space12H,
-          CustomButton(
-            text: AppStaticStrings.requestPayout,
-            onPressed: () {},
-          ),
+          CustomButton(text: AppStaticStrings.requestPayout, onPressed: () {}),
         ],
       ),
     );
@@ -151,22 +164,43 @@ class SellerHeaderSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const CustomNetworkImage(
-                imageUrl: 'https://i.pravatar.cc/100',
-                height: 60,
-                width: 60,
-                boxShape: BoxShape.circle,
-                border: Border.fromBorderSide(
-                    BorderSide(color: Colors.white, width: 2)),
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  const CustomNetworkImage(
+                    imageUrl: 'https://i.pravatar.cc/100',
+                    height: 70,
+                    width: 70,
+                    boxShape: BoxShape.circle,
+                    border: Border.fromBorderSide(
+                      BorderSide(color: AppColors.kAccentColor, width: 2),
+                    ),
+                  ),
+                  Positioned(
+                    right: -4,
+                    bottom: -4,
+                    child: DefaultGreyCircleContainer(
+                      customIcon: Icons.camera_alt_outlined,
+                      onTap: () {},
+                      iconColor: AppColors.kBackgroundColor,
+                      backgroundColor: AppColors.kAccentColor,
+                    ),
+                  ),
+                ],
               ),
               space8H,
-              const CustomText('Sneaker Head',
-                  variant: TextVariant.headlineSmall),
+              const CustomText(
+                'Sneaker Head',
+                variant: TextVariant.headlineSmall,
+              ),
               const Row(
                 children: [
                   Icon(Icons.star, color: AppColors.kYellowColor, size: 14),
-                  CustomText(' 4.5  120 Reviews',
-                      fontSize: 12, color: AppColors.kGreyTextColor),
+                  CustomText(
+                    ' 4.5  120 Reviews',
+                    fontSize: 12,
+                    color: AppColors.kGreyTextColor,
+                  ),
                 ],
               ),
             ],
@@ -187,18 +221,30 @@ class TotalWithdrawnCard extends StatelessWidget {
       width: double.infinity,
       padding: AppPadding.getPadding16(context),
       decoration: BoxDecoration(
-        color: AppColors.kPrimaryColor.withValues(alpha: 0.2),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            AppColors.kPrimaryColor,
+            AppColors.kPrimaryColor.withValues(alpha: 0.5),
+          ],
+        ),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.kPrimaryColor),
       ),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomText(AppStaticStrings.totalWithdrawn,
-              fontSize: 12, color: AppColors.kGreyTextColor),
+          CustomText(
+            AppStaticStrings.totalWithdrawn,
+            fontSize: 12,
+            color: AppColors.kGreyTextColor,
+          ),
           CustomText('£350.00', fontSize: 32, fontWeight: FontWeight.bold),
-          CustomText('Pending: £120.00',
-              fontSize: 12, color: AppColors.kGreyTextColor),
+          CustomText(
+            'Pending: £120.00',
+            fontSize: 12,
+            color: AppColors.kGreyTextColor,
+          ),
         ],
       ),
     );
@@ -231,8 +277,8 @@ class PayoutHistoryItem extends StatelessWidget {
             status == 'Failed'
                 ? Icons.error_outline
                 : status == 'Processing'
-                    ? Icons.access_time
-                    : Icons.check_circle_outline,
+                ? Icons.access_time
+                : Icons.check_circle_outline,
             color: statusColor,
           ),
           space12W,
@@ -240,24 +286,32 @@ class PayoutHistoryItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                CustomText('#TR-98375 via Stripe',
-                    variant: TextVariant.titleSmall),
-                CustomText('Visa **** 5678',
-                    fontSize: 10, color: AppColors.kGreyTextColor),
-                CustomText('Jun 12, 2026, 04:30 PM',
-                    fontSize: 10, color: AppColors.kGreyTextColor),
+                CustomText(
+                  '#TR-98375 via Stripe',
+                  variant: TextVariant.titleSmall,
+                ),
+                CustomText(
+                  'Visa **** 5678',
+                  fontSize: 10,
+                  color: AppColors.kGreyTextColor,
+                ),
+                CustomText(
+                  'Jun 12, 2026, 04:30 PM',
+                  fontSize: 10,
+                  color: AppColors.kGreyTextColor,
+                ),
               ],
             ),
           ),
           Column(
+            spacing: 6,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               CustomText(amount, variant: TextVariant.titleLarge),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 decoration: BoxDecoration(
-                  color: statusColor.withValues(alpha: 0.1),
+                  color: statusColor.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: CustomText(status, color: statusColor, fontSize: 10),
@@ -272,11 +326,7 @@ class PayoutHistoryItem extends StatelessWidget {
 
 // ─── Storefront Editor Header (with image picker callbacks) ─────────────────
 class StorefrontEditorHeader extends StatelessWidget {
-  const StorefrontEditorHeader({
-    super.key,
-    this.onBannerTap,
-    this.onAvatarTap,
-  });
+  const StorefrontEditorHeader({super.key, this.onBannerTap, this.onAvatarTap});
   final VoidCallback? onBannerTap;
   final VoidCallback? onAvatarTap;
 
@@ -298,6 +348,8 @@ class StorefrontEditorHeader extends StatelessWidget {
           child: DefaultGreyCircleContainer(
             customIcon: Icons.camera_alt_outlined,
             onTap: onBannerTap,
+            iconColor: AppColors.kBackgroundColor,
+            backgroundColor: AppColors.kAccentColor,
           ),
         ),
         Positioned(
@@ -311,11 +363,14 @@ class StorefrontEditorHeader extends StatelessWidget {
                 width: 80,
                 boxShape: BoxShape.circle,
                 border: Border.fromBorderSide(
-                    BorderSide(color: Colors.white, width: 2)),
+                  BorderSide(color: Colors.white, width: 2),
+                ),
               ),
               DefaultGreyCircleContainer(
                 customIcon: Icons.camera_alt_outlined,
                 onTap: onAvatarTap,
+                iconColor: AppColors.kBackgroundColor,
+                backgroundColor: AppColors.kAccentColor,
               ),
             ],
           ),

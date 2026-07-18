@@ -8,8 +8,7 @@ class SellerSettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
-        title: const CustomText(AppStaticStrings.sellerHubSettings,
-            variant: TextVariant.headlineMedium),
+        title: const Text(AppStaticStrings.sellerHubSettings),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -21,8 +20,10 @@ class SellerSettingsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CustomText(AppStaticStrings.financePayouts,
-                      variant: TextVariant.titleLarge),
+                  const CustomText(
+                    AppStaticStrings.financePayouts,
+                    variant: TextVariant.titleLarge,
+                  ),
                   space8H,
                   ProfileMenuItem(
                     title: AppStaticStrings.manageBank,
@@ -34,9 +35,11 @@ class SellerSettingsPage extends StatelessWidget {
                     icon: AppAssets.history,
                     onTap: () => context.push(AppRoutes.payoutHistory),
                   ),
-                  space16H,
-                  const CustomText(AppStaticStrings.storePreferences,
-                      variant: TextVariant.titleLarge),
+                  space8H,
+                  const CustomText(
+                    AppStaticStrings.storePreferences,
+                    variant: TextVariant.titleLarge,
+                  ),
                   space8H,
                   ProfileMenuItem(
                     title: AppStaticStrings.editStorefront,
@@ -46,20 +49,24 @@ class SellerSettingsPage extends StatelessWidget {
                   ProfileMenuItem(
                     title: AppStaticStrings.myReviews,
                     icon: AppAssets.medalStar,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.reviews),
                   ),
-                  space16H,
-                  const CustomText(AppStaticStrings.shippingReturns,
-                      variant: TextVariant.titleLarge),
+                  space8H,
+                  const CustomText(
+                    AppStaticStrings.shippingReturns,
+                    variant: TextVariant.titleLarge,
+                  ),
                   space8H,
                   ProfileMenuItem(
                     title: AppStaticStrings.sellerDispatchedAddress,
                     icon: AppAssets.truckFast,
                     onTap: () => context.push(AppRoutes.senderAddress),
                   ),
-                  space16H,
-                  const CustomText('Preferences',
-                      variant: TextVariant.titleLarge),
+                  space8H,
+                  const CustomText(
+                    'Preferences',
+                    variant: TextVariant.titleLarge,
+                  ),
                   space8H,
                   ProfileMenuItem(
                     title: AppStaticStrings.helpSupport,

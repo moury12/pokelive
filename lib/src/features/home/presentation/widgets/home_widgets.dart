@@ -117,19 +117,27 @@ class DefaultGreyCircleContainer extends StatelessWidget {
   final String? asset;
   final IconData? customIcon;
   final VoidCallback? onTap;
+  final Color? backgroundColor;
+  final Color? iconColor;
   const DefaultGreyCircleContainer({
     super.key,
     this.asset,
     this.customIcon,
     this.onTap,
+    this.backgroundColor,
+    this.iconColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.kGreyTextColor.withValues(alpha: .2),
-        border: Border.all(color: AppColors.kBorderColor, width: .7),
+        color:
+            backgroundColor ?? AppColors.kGreyTextColor.withValues(alpha: .2),
+        border: Border.all(
+          color: backgroundColor ?? AppColors.kBorderColor,
+          width: .7,
+        ),
         shape: BoxShape.circle,
       ),
       child: ButtonTapWidget(
@@ -137,14 +145,20 @@ class DefaultGreyCircleContainer extends StatelessWidget {
         shape: CircleBorder(),
         child: Padding(
           padding: const EdgeInsets.all(6.0),
-          child:asset!=null? SvgPicture.asset(
-            asset!,
-            height: 20,
-            colorFilter: const ColorFilter.mode(
-              AppColors.kTextColor,
-              BlendMode.srcIn,
-            ),
-          ):Icon(customIcon,color: AppColors.kTextColor,size: 18,),
+          child: asset != null
+              ? SvgPicture.asset(
+                  asset!,
+                  height: 20,
+                  colorFilter: ColorFilter.mode(
+                    iconColor ?? AppColors.kTextColor,
+                    BlendMode.srcIn,
+                  ),
+                )
+              : Icon(
+                  customIcon,
+                  color: iconColor ?? AppColors.kTextColor,
+                  size: 18,
+                ),
         ),
       ),
     );
@@ -198,7 +212,7 @@ class HomeCategoryFilter extends StatelessWidget {
             CustomText(
               label,
               color: isSelected ? Colors.white : AppColors.kGreyTextColor,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              fontWeight: FontWeight.bold,
             ),
           ],
         ),

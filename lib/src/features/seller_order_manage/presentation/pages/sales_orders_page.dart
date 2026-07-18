@@ -8,36 +8,29 @@ class SalesOrdersPage extends ConsumerWidget {
     final currentTab = ref.watch(orderTabProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(),
-        title: const CustomText(AppStaticStrings.salesOrders,
-            variant: TextVariant.headlineMedium),
-      ),
+      appBar: AppBar(title: const Text(AppStaticStrings.salesOrders)),
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: AppPadding.getPadding12H(context),
             child: Row(
               children: [
                 OrderTabChip(
                   label: AppStaticStrings.toShip,
                   isSelected: currentTab == 0,
-                  onTap: () =>
-                      ref.read(orderTabProvider.notifier).state = 0,
+                  onTap: () => ref.read(orderTabProvider.notifier).state = 0,
                 ),
                 space8W,
                 OrderTabChip(
                   label: AppStaticStrings.shipped,
                   isSelected: currentTab == 1,
-                  onTap: () =>
-                      ref.read(orderTabProvider.notifier).state = 1,
+                  onTap: () => ref.read(orderTabProvider.notifier).state = 1,
                 ),
                 space8W,
                 OrderTabChip(
                   label: AppStaticStrings.completed,
                   isSelected: currentTab == 2,
-                  onTap: () =>
-                      ref.read(orderTabProvider.notifier).state = 2,
+                  onTap: () => ref.read(orderTabProvider.notifier).state = 2,
                 ),
               ],
             ),
