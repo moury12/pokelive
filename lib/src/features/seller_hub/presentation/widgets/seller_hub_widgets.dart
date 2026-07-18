@@ -169,13 +169,18 @@ class SellerHeaderSection extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  const CustomNetworkImage(
-                    imageUrl: 'https://i.pravatar.cc/100',
-                    height: 70,
-                    width: 70,
-                    boxShape: BoxShape.circle,
-                    border: Border.fromBorderSide(
-                      BorderSide(color: AppColors.kAccentColor, width: 2),
+                  GestureDetector(
+                    onTap: () {
+                      context.push(AppRoutes.storyView);
+                    },
+                    child: const CustomNetworkImage(
+                      imageUrl: 'https://i.pravatar.cc/100',
+                      height: 70,
+                      width: 70,
+                      boxShape: BoxShape.circle,
+                      border: Border.fromBorderSide(
+                        BorderSide(color: AppColors.kAccentColor, width: 2),
+                      ),
                     ),
                   ),
                   Positioned(
