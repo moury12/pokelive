@@ -179,6 +179,17 @@ class AppStaticStrings {
   static const String markAsShipped = 'Mark as Shipped';
   static const String markAsDelivered = 'Mark as Delivered';
   static const String cancel = 'Cancel';
+  // Live Streaming
+static const String streamSetup = 'Stream Setup';
+static const String streamTitle = 'Stream Title';
+static const String featuredItems = 'Featured Items';
+static const String addProduct = 'Add Product';
+static const String selectProductsForStream = 'Select Products For Stream';
+static const String addToStream = 'Add To Stream';
+static const String live = 'Live';
+static const String end = 'End';
+static const String muteUser = 'Mute User';
+static const String blockKick = 'Block & Kick';
 }
 
 

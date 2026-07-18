@@ -138,6 +138,14 @@ class AppRouter {
         path: AppRoutes.salesOrders,
         builder: (context, state) => const SalesOrdersPage(),
       ),
+      GoRoute(
+path: AppRoutes.streamSetup,
+builder: (context, state) => const StreamSetupPage(),
+),
+GoRoute(
+path: AppRoutes.activeStream,
+builder: (context, state) => const ActiveStreamPage(),
+),
     ],
   );
 }

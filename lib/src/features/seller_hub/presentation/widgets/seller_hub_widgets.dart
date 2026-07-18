@@ -34,7 +34,9 @@ class ReadyToLiveCard extends StatelessWidget {
             text: AppStaticStrings.createStream,
             backgroundColor: Colors.white,
             textColor: AppColors.kPrimaryColor,
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRoutes.streamSetup);
+            },
           ),
         ],
       ),

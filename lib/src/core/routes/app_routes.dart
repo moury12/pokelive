@@ -47,4 +47,6 @@ class AppRoutes {
 
   // Sales & Orders
   static const String salesOrders = '/sales-orders';
+  static const String streamSetup = '/stream-setup';
+static const String activeStream = '/active-stream';
 }
