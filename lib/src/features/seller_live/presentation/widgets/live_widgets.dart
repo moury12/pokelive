@@ -1,5 +1,4 @@
 import '../../../../src_export.dart';
-import '../../../../src_export.dart';
 
 class LiveStatusBadge extends StatelessWidget {
   final String timer, viewers;

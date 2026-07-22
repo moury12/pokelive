@@ -188,7 +188,9 @@ class SellerHeaderSection extends StatelessWidget {
                     bottom: -4,
                     child: DefaultGreyCircleContainer(
                       customIcon: Icons.camera_alt_outlined,
-                      onTap: () {},
+                      onTap: () {
+                        AppImagePicker.pickImage(context);
+                      },
                       iconColor: AppColors.kBackgroundColor,
                       backgroundColor: AppColors.kAccentColor,
                     ),

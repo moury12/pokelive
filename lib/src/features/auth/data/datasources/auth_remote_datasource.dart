@@ -15,7 +15,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<UserModel> login({required String email, required String password}) async {
     // Simulate network call
     await Future.delayed(const Duration(seconds: 1));
-    // TODO: replace with real API call
+   
     return UserModel(id: '1', email: email, name: 'Demo User');
   }
 

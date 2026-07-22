@@ -8,7 +8,6 @@ class AppTheme {
     useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.kPrimaryColor,
-      background: AppColors.kBackgroundColor,
       // surface: AppColors.kSurfaceColor,
     ),
     scaffoldBackgroundColor: AppColors.kBackgroundColor,
