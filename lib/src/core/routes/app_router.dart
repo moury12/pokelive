@@ -35,6 +35,10 @@ class AppRouter {
         builder: (context, state) => const NavigationPage(),
       ),
       GoRoute(
+        path: AppRoutes.notification,
+        builder: (context, state) => const NotificationPage(),
+      ),
+      GoRoute(
         path: AppRoutes.raffleDetail,
         builder: (context, state) => const RaffleDetailPage(),
       ),

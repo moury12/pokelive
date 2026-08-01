@@ -59,7 +59,7 @@ class LoginPage extends ConsumerWidget {
             CustomButton(
               text: AppStaticStrings.logIn,
               onPressed: () {
-                context.push(AppRoutes.home);
+                context.go(AppRoutes.home);
               }, // Logic not needed
               icon: Icons.arrow_forward,
             ),

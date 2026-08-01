@@ -16,6 +16,7 @@ export 'features/category/category_export.dart';
 export 'features/product/product_export.dart';
 export 'features/cart/cart_export.dart';
 export 'features/profile/profile_export.dart';
+export 'features/notification/notification_export.dart';
 export 'features/purchase/purchase_export.dart';
 export 'features/seller_hub/seller_hub_export.dart';
 export 'features/seller_inventory_manage/seller_inventory_manage_export.dart';
