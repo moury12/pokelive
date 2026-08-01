@@ -76,7 +76,9 @@ class ProfilePage extends StatelessWidget {
               icon: AppAssets.logout,
               textColor: AppColors.kRedColor,
               showChevron: false,
-              onTap: () {},
+              onTap: () {
+                context.go(AppRoutes.login);
+              },
             ),
           ],
         ),

@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import '../../../../src_export.dart';
 
@@ -28,12 +27,16 @@ class HomePage extends ConsumerWidget {
         actions: [
           DefaultGreyCircleContainer(
             asset: AppAssets.searchNormal,
-            onTap: () {},
+            onTap: () {
+              ref.read(navigationProvider.notifier).state = 1;
+            },
           ),
           space8W,
           DefaultGreyCircleContainer(
             asset: AppAssets.notificationBing,
-            onTap: () {},
+            onTap: () {
+              context.push(AppRoutes.notification);
+            },
           ),
           space8W,
           CartIconButton(),
